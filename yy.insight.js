@@ -19,6 +19,11 @@ var insight = function(imgSrc, options) {
         navButtonsEnabled: true,
         css:{}
     };
+
+    function getStyle(ele,name){
+        return window.getComputedStyle?window.getComputedStyle(ele,null)[name]:ele.currentStyle[name];
+    }
+
     //Load options
     for (var i in defaultOptions) {
         options[i] = (undefined === options[i]) ? defaultOptions[i] : options[i];
@@ -135,11 +140,11 @@ var insight = function(imgSrc, options) {
         if ('none' == div.style.display) return;
 
         if (/(left|right)/i.test(direction)) {
-            var left = parseInt(this.style.left);
+            var left = parseInt(getStyle(this,'left'));
             left = ('left' == direction) ? left - 1 : left + 1;
             this.style.left = left + "px";
         } else if (/(up|down)/i.test(direction)) {
-            var top = parseInt(this.style.top);
+            var top = parseInt(getStyle(this,'top'));
             top = ('up' == direction) ? top - 1 : top + 1;
             this.style.top = top + "px";
         }
