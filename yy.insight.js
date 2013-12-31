@@ -1,15 +1,23 @@
+/**
+  * yy.insight-0.1.0.js
+  *
+  * changelog
+  * 2013-12-31[16:11:51]:copyright
+  *
+  * @info yinyong,osx-x64,UTF-8,10.129.172.183,js,/Volumes/yinyong/daohangqq2/resource/views/scripts/insight
+  * @author yanni4night#gmail.com
+  * @version 0.1.1
+  * @since 0.1.0
+  */
 var insight = function(imgSrc, options) {
     options = options || {};
     var defaultOptions = {
-        width: "100%",
-        height: "100%",
-        left: "0",
-        top: "0",
         zIndex: 10000,
         ctrlPanelPosition: 'NE', //Or NW or SW or SE
         hideonload: true,
         hotkeysEnabled: true,
-        navButtonsEnabled: true
+        navButtonsEnabled: true,
+        css:{}
     };
     //Load options
     for (var i in defaultOptions) {
@@ -22,7 +30,21 @@ var insight = function(imgSrc, options) {
 
     //Half-opacity div
     var div = document.createElement('div');
-    div.style.cssText = "display:" + (options.hideonload ? 'none' : 'block') + ";position:absolute;z-index:" + options.zIndex + ";width:" + options.width + ";height:" + options.height + ";background:url(" + imgSrc + ") left top no-repeat;left:" + options.left + ";top:" + options.top;
+
+    div.style.display=options.hideonload ? 'none' : 'block';
+    div.style.position='absolute';
+
+   div.style.zIndex=options.css.zIndex||10000;
+   div.style.width=options.css.width||"100%";
+   div.style.height=options.css.height||"100%";
+   div.style.left=0;
+   div.style.top=0;
+   div.style.background="url(" + imgSrc + ") left top no-repeat";
+    for (var e in options.css) {
+        if (options.css.hasOwnProperty(e)){
+            div.style[e] = options.css[e];
+        }
+    }
 
     //Show or hide
     var toggle = function() {
