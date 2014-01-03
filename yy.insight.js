@@ -17,11 +17,21 @@ var insight = function(imgSrc, options) {
         hideonload: true,
         hotkeysEnabled: true,
         navButtonsEnabled: true,
+        bigStep:5,
         css:{}
     };
 
     function getStyle(ele,name){
         return window.getComputedStyle?window.getComputedStyle(ele,null)[name]:ele.currentStyle[name];
+    }
+
+    function bindEvent(ele,evt,func){
+        if(document.addEventListener)
+        {
+            ele.addEventListener(evt,func,false);
+        }else{
+            ele.attachEvent('on' + evt ,func);
+        }
     }
 
     //Load options
@@ -136,35 +146,39 @@ var insight = function(imgSrc, options) {
     ctrldiv.appendChild(toggleBtn);
 
     //Move the half-opacity div
-    var move = function(direction) {
-        if ('none' == div.style.display) return;
+    var move = function(direction,step) {
+        if ('none' == this.style.display) return;
+        
+        if( !+step ){
+                step = 1;
+        }
 
         if (/(left|right)/i.test(direction)) {
             var left = parseInt(getStyle(this,'left'));
-            left = ('left' == direction) ? left - 1 : left + 1;
+            left = ('left' == direction) ? left - step : left + step;
             this.style.left = left + "px";
         } else if (/(up|down)/i.test(direction)) {
             var top = parseInt(getStyle(this,'top'));
-            top = ('up' == direction) ? top - 1 : top + 1;
+            top = ('up' == direction) ? top - step : top + step;
             this.style.top = top + "px";
         }
 
     };
 
-    options.hotkeysEnabled && (document.body.onkeydown = function(e) {
+    options.hotkeysEnabled && (bindEvent(document,'keydown',function(e) {
         e = e || window.event;
         switch (e.keyCode) {
             case 65: //left
-                move.call(div, 'left');
+                move.call(div, 'left',e.shiftKey?options.bigStep:1);
                 break;
             case 87: //up
-                move.call(div, 'up');
+                move.call(div, 'up',e.shiftKey?options.bigStep:1);
                 break;
             case 68: //right
-                move.call(div, 'right');
+                move.call(div, 'right',e.shiftKey?options.bigStep:1);
                 break;
             case 83: //down
-                move.call(div, 'down');
+                move.call(div, 'down',e.shiftKey?options.bigStep:1);
                 break;
             case 71: //toggle
                 toggle();
@@ -172,7 +186,7 @@ var insight = function(imgSrc, options) {
             default:
                 ;
         }
-    });
+    }));
     document.body.appendChild(div);
     document.body.appendChild(ctrldiv);
 
