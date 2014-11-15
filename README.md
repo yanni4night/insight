@@ -1,4 +1,4 @@
-#yy.insight
+#insight
 
 
 Help you create web pages as the design sketch.It draws a half-opacity design sketch on the page,then you could see where is wrong.
@@ -7,7 +7,7 @@ It supports all pc browsers including IE6/IE7,but we have a problem on IE6:it do
 
 ##Usage
 #####HTML
-	<script src="./js/yy.insight.js"></script>
+	<script src="./js/insight.js"></script>
 	<script >insight(imageURL,options);</script>
 
 #####options:
