@@ -24,4 +24,5 @@ It supports all pc browsers including IE6/IE7,but we have a problem on IE6:it do
 	insight('/static/img/index.test.png',{bigStep:10,css:{width:"100%",height:"1800px",zIndex:10000}});
 
 ##Changelog
+ - 2014-11-15[18:25:57]:register to bower
  - 2014-01-03[23:40:27]:support big step
