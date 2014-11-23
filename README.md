@@ -1,5 +1,5 @@
 #insight
-
+[![Bower version][bower-image]][bower-url]
 
 Help you create web pages as the design sketch.It draws a half-opacity design sketch on the page,then you could see where is wrong.
 
@@ -26,3 +26,6 @@ It supports all pc browsers including IE6/IE7,but we have a problem on IE6:it do
 ##Changelog
  - 2014-11-15[18:25:57]:register to bower
  - 2014-01-03[23:40:27]:support big step
+
+[bower-url]:http://badge.fury.io/bo/insight
+[bower-image]: https://badge.fury.io/bo/insight.svg
