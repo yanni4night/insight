@@ -1,0 +1,38 @@
+{
+  "name": "ux-insight",
+  "version": "1.0.0",
+  "description": "Insight UX on pages",
+  "main": "dist/insight.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "format": "prettier \"*.{js,md}\" --write",
+    "build": "rollup insight.js --file dist/insight.js --format umd --name \"insight\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanni4night/insight.git"
+  },
+  "keywords": [
+    "insight"
+  ],
+  "author": "yanni4night@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yanni4night/insight/issues"
+  },
+  "homepage": "https://github.com/yanni4night/insight#readme",
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^1.1.4",
+    "lint-staged": "^8.0.4",
+    "prettier": "^1.15.2",
+    "rollup": "^0.67.1"
+  }
+}
