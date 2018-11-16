@@ -1,6 +1,6 @@
 {
   "name": "ux-insight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Insight UX on pages",
   "main": "dist/insight.js",
   "files": [
@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "format": "prettier \"*.{js,md}\" --write",
+    "prepare": "npm run build",
     "build": "rollup insight.js --file dist/insight.js --format umd --name \"insight\""
   },
   "repository": {
